@@ -36,6 +36,8 @@ html, body { background: var(--bg) !important; }
   overflow: hidden;
 }
 .reveal .controls { color: var(--red) !important; }
+.reveal .controls .navigate-prev,
+.reveal .controls .navigate-next { display: none !important; }
 .reveal .progress span { background: var(--red) !important; }
 .reveal .slide-number {
   font-family: var(--mono) !important;
