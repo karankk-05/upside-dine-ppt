@@ -765,12 +765,14 @@
         logoPlayed = false;
       }
 
-      // Add native controls to background video
+      // Add native controls to background video and prevent autoplay
       const bgVideo = event.currentSlide.closest('.reveal').querySelector('.slide-background.present video');
       if (bgVideo) {
         bgVideo.controls = true;
         bgVideo.muted = false;
         bgVideo.style.zIndex = '1';
+        bgVideo.pause();
+        bgVideo.currentTime = 0;
       }
       // Pause background videos on other slides
       document.querySelectorAll('.slide-background:not(.present) video').forEach(function(v) {
