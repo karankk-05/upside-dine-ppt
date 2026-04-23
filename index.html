@@ -53,8 +53,9 @@
       </section>
 
 
-      <section data-background-color="#000000" data-background-video="vid.mp4"
-        data-background-video-muted data-background-size="contain">
+      <section data-background-color="#000000" style="padding: 0 !important; margin: 0 !important;">
+        <video src="vid.mp4" controls playsinline preload="auto"
+          style="width: 1280px; height: 720px; object-fit: contain; display: block; margin: 0; padding: 0;"></video>
       </section>
 
 
@@ -764,21 +765,6 @@
       if (!logoSlide) {
         logoPlayed = false;
       }
-
-      // Add native controls to background video and prevent autoplay
-      const bgVideo = event.currentSlide.closest('.reveal').querySelector('.slide-background.present video');
-      if (bgVideo) {
-        bgVideo.controls = true;
-        bgVideo.muted = false;
-        bgVideo.style.zIndex = '1';
-        bgVideo.pause();
-        bgVideo.currentTime = 0;
-      }
-      // Pause background videos on other slides
-      document.querySelectorAll('.slide-background:not(.present) video').forEach(function(v) {
-        v.pause();
-        v.controls = false;
-      });
     });
   </script>
 
