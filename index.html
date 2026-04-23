@@ -53,9 +53,8 @@
       </section>
 
 
-      <section data-background-color="#000000">
-        <video id="hall12-video" src="vid.mp4" controls playsinline preload="auto"
-          style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: contain; z-index: 1;"></video>
+      <section data-background-color="#000000" data-background-video="vid.mp4"
+        data-background-video-muted data-background-size="contain">
       </section>
 
 
@@ -765,6 +764,19 @@
       if (!logoSlide) {
         logoPlayed = false;
       }
+
+      // Add native controls to background video
+      const bgVideo = event.currentSlide.closest('.reveal').querySelector('.slide-background.present video');
+      if (bgVideo) {
+        bgVideo.controls = true;
+        bgVideo.muted = false;
+        bgVideo.style.zIndex = '1';
+      }
+      // Pause background videos on other slides
+      document.querySelectorAll('.slide-background:not(.present) video').forEach(function(v) {
+        v.pause();
+        v.controls = false;
+      });
     });
   </script>
 
