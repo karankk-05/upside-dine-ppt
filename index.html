@@ -54,21 +54,23 @@
 
 
       <section data-background-color="#000000">
-        <div class="video-container"
-          style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;">
-          <div class="vhs-frame" style="width: 100%; height: 100%; border: none; position: relative;">
-            <div class="vhs-topbar" style="font-size: 1.5em; padding: 20px; position: absolute; width: 100%; box-sizing: border-box; z-index: 10;">HALL 12 MESS — PEAK HOUR</div>
-            <div class="vhs-screen" style="height: 100%; padding: 0; display: flex; justify-content: center; align-items: center;">
-              <video id="hall12-video" src="vid.mp4" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;" onclick="const btn = document.getElementById('hall12-play-btn'); if(this.paused){this.play(); btn.innerText='PAUSE VIDEO';}else{this.pause(); btn.innerText='PLAY VIDEO';}"></video>
-              <button id="hall12-play-btn" onclick="const v = document.getElementById('hall12-video'); if(v.paused){v.play(); this.innerText='PAUSE VIDEO';}else{v.pause(); this.innerText='PLAY VIDEO';}" style="position: relative; z-index: 20; padding: 15px 30px; font-size: 1.5em; font-family: var(--body); font-weight: bold; background: rgba(20, 5, 5, 0.7); color: white; border: 2px solid var(--red); border-radius: 8px; cursor: pointer; backdrop-filter: blur(5px); box-shadow: 0 0 20px rgba(196, 30, 30, 0.5); transition: all 0.3s ease;">PLAY VIDEO</button>
-              <script>
-                document.getElementById('hall12-video').addEventListener('ended', function() {
-                  document.getElementById('hall12-play-btn').innerText = 'PLAY VIDEO';
-                });
-              </script>
-            </div>
+        <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; overflow: hidden;">
+          <video id="hall12-video" src="vid.mp4" playsinline preload="auto"
+            style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: 1;"
+            onclick="const btn = document.getElementById('hall12-play-btn'); if(this.paused){this.play(); btn.textContent='⏸ PAUSE';}else{this.pause(); btn.textContent='▶ PLAY';}"></video>
+          <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: flex; justify-content: center; align-items: center; z-index: 2; pointer-events: none;">
+            <button id="hall12-play-btn"
+              onclick="const v = document.getElementById('hall12-video'); if(v.paused){v.play(); this.textContent='⏸ PAUSE';}else{v.pause(); this.textContent='▶ PLAY';}"
+              style="pointer-events: auto; padding: 18px 44px; font-size: 1.6em; font-family: 'Inter', sans-serif; font-weight: 700; letter-spacing: 0.08em; background: rgba(10, 0, 0, 0.75); color: #ffffff; border: 2px solid #c41e1e; border-radius: 12px; cursor: pointer; backdrop-filter: blur(8px); box-shadow: 0 0 30px rgba(196, 30, 30, 0.6), inset 0 0 15px rgba(196, 30, 30, 0.15); transition: all 0.3s ease; text-transform: uppercase;">
+              ▶ PLAY
+            </button>
           </div>
         </div>
+        <script>
+          document.getElementById('hall12-video').addEventListener('ended', function () {
+            document.getElementById('hall12-play-btn').textContent = '▶ PLAY';
+          });
+        </script>
       </section>
 
 
